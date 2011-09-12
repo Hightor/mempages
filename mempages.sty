@@ -1,0 +1,84 @@
+﻿\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mempages}[2011/09/12 v1.0]
+\usepackage{fontspec}
+\usepackage{ifthen}
+\usepackage{mathpazo}
+\usepackage{tgpagella}
+\usepackage{tgadventor}
+\usepackage{microtype}
+% -------------------------------------------------
+\providecommand{\vstrut}[1]{\rule{0pt}{#1}}
+\providecommand{\hstrut}[1]{\rule{#1}{0pt}}
+\newcommand{\celia}{Celia~R.~Navarro\\}
+\newcommand{\brent}{Brent~Longborough\\}
+\newcommand{\neil}{Neil~Trueman\\}
+\newboolean{@envelope}
+\setboolean{@envelope}{false}
+\newboolean{@frame}
+\setboolean{@frame}{false}
+\newboolean{@portuguese}
+\setboolean{@portuguese}{false}
+\newlength{\blmpagewidth}
+\newlength{\blmbind}
+\setlength{\blmbind}{0pt}
+\newboolean{@stitch}
+\setboolean{@stitch}{false}
+% -------------------------------------------------
+\DeclareOption{portuguese}{\setboolean{@portuguese}{true}}
+\DeclareOption{showframe}{\setboolean{@frame}{true}}
+\DeclareOption{stitch}{
+	\setlength{\blmbind}{5mm}
+	\setboolean{@stitch}{true}
+	}
+\DeclareOption{widestitch}{
+	\setlength{\blmbind}{15mm}
+	\setboolean{@stitch}{true}
+	}
+\ProcessOptions
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[%
+	Numbers=OldStyle,
+	SizeFeatures={%
+		{Size={-8.4},Font=* Caption},
+		{Size={8.5-13.0},Font=*},
+		{Size={13.1-19.9},Font=* Subhead},
+		{Size={20.0-},Font=* Display}
+	}
+]{Minion Pro Medium}
+\setsansfont[%
+	Numbers=OldStyle
+]{Myriad Pro}
+\setmonofont[%
+	Numbers=Lining
+]{Consolas}
+\setulmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
+\setlrmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
+\setheadfoot{1.2\baselineskip}{0.0849\paperwidth}
+%\setheadfoot{1.2\baselineskip}{0.05\paperheight}
+% \setheaderspaces{*}{*}{0.618}
+\setmarginnotes{0.125\foremargin}{0.75\foremargin}{\onelineskip}
+\setcolsepandrule{10pt}{0.4pt}
+\setheaderspaces{*}{*}{0.618}
+\checkandfixthelayout[fixed]
+\ifthenelse{\boolean{@frame}}{\usepackage{showframe}}{}
+\makepagestyle{unruled}
+\makeevenfoot{unruled}{\thepage}{}{}
+\makeoddfoot{unruled}{}{}{\thepage}
+\makepsmarks{unruled}{\@ruledmarks}
+\makeevenhead{unruled}{\scshape\leftmark}{}{}
+\makeoddhead{unruled}{}{}{\rightmark}
+\makepagestyle{unRuled}
+\makerunningwidth{unRuled}{1.166667\textwidth}
+\makeheadposition{unRuled}{flushright}{flushleft}{flushright}{flushleft}
+\makeevenfoot{unRuled}{\thepage}{}{}
+\makeoddfoot{unRuled}{}{}{\thepage}
+\makepsmarks{unRuled}{\@ruledmarks}
+\makeevenhead{unRuled}{\scshape\leftmark}{}{}
+\makeoddhead{unRuled}{}{}{\rightmark}
+\setsecnumdepth{none}
+\renewcommand{\cftchapterleader}{}
+\renewcommand{\cftchapterafterpnum}{\hfill\space}
+\chapterstyle{bringhurst}
+\pagestyle{unruled}
+\frenchspacing
+\midsloppy

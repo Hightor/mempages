@@ -1,0 +1,13 @@
+    The `mempages' package provides a selection of pre-defined
+page geometries, inspired by Robert Bringhurst's book,
+``The Elements of Typographic Style''.
+
+    mempages is licenced under the LPPL. For more details, 
+please see the accompanying manual: mempages.pdf.
+
+Change History
+~~~~~~~~~~~~~~
+
+2011-08-22    1.0    Initial release, providing:
+
+    TK
