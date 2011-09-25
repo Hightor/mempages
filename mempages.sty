@@ -95,15 +95,3 @@
 }
 \ProcessOptions
 \mp@caftl
-\marginparmargin{outside}
-\sideparmargin{outside}
-\newenvironment{fullwidth}[1][0.5\onelineskip]{%
-	\providelength{\mp@vskip}\setlength{\mp@vskip}{#1}
-	\providelength{\mp@fullhang}\setlength{\mp@fullhang}{\marginparwidth}
-	\addtolength{\mp@fullhang}{\marginparsep}
-	\begin{adjustwidth}{0pt}{-\mp@fullhang}
-	\vspace{\mp@vskip}
-}{%
-	\vspace{\mp@vskip}
-	\end{adjustwidth}%
-}
