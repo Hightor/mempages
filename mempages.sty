@@ -8,9 +8,7 @@
 	\let#1#2
 }
 \providecommand{\mp@txtalg}{lines}
-\newbool{mp@frame}
 % -------------------------------------------------
-\DeclareOption{frame}{\booltrue{mp@frame}}
 \DeclareOption{fixed}{\renewcommand{\mp@txtalg}{fixed}}
 \DeclareOption{lines}{\renewcommand{\mp@txtalg}{lines}}
 \DeclareOption{classic}{\renewcommand{\mp@txtalg}{classic}}
@@ -79,7 +77,6 @@
 }
 \ProcessOptions
 \checkandfixthelayout[fixed]
-\ifbool{mp@frame}{\usepackage{showframe}}{}
 \marginparmargin{outside}
 \sideparmargin{outside}
 \newenvironment{fullwidth}[1][0.5\onelineskip]{%
