@@ -13,6 +13,16 @@
 \DeclareOption{lines}{\renewcommand{\mp@caftl}{\checkandfixthelayout[lines]}}
 \DeclareOption{classic}{\renewcommand{\mp@caftl}{\checkandfixthelayout[classic]}}
 \DeclareOption{nearest}{\renewcommand{\mp@caftl}{\checkandfixthelayout[nearest]}}
+\DeclareOption{bringhurst}{
+	\ifdimcomp{\paperheight}{>}{1.732051\paperwidth}{%
+		\settrimmedsize{*}{\paperwidth}{1.732051}
+	}{
+		\settrimmedsize{\paperheight}{*}{0.57735027}
+	}
+	\setulmarginsandblock{0.077922\paperheight}{*}{2}
+	\setlrmarginsandblock{0.09774436\paperwidth}{0.2330827\paperwidth}{*}
+	\setmarginnotes{0.03\paperwidth}{0.142857\paperwidth}{\marginparpush}
+}
 \DeclareOption{tschichold}{
 	\ifdimcomp{\paperheight}{>}{1.5\paperwidth}{%
 		\settrimmedsize{*}{\paperwidth}{1.5}
