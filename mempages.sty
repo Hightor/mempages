@@ -15,9 +15,9 @@
 \DeclareOption{nearest}{\renewcommand{\mp@caftl}{\checkandfixthelayout[nearest]}}
 \DeclareOption{tschichold}{
 	\ifdimcomp{\paperheight}{>}{1.5\paperwidth}{%
-		\settrimmedsize{1.5\paperwidth}{\paperwidth}{*}
+		\settrimmedsize{*}{\paperwidth}{1.5}
 	}{
-		\settrimmedsize{\paperheight}{0.66666667\paperheight}{*}
+		\settrimmedsize{\paperheight}{*}{0.66666667}
 	}
 	\setulmarginsandblock{0.11111111\paperheight}{*}{2}
 	\setlrmarginsandblock{0.11111111\paperwidth}{*}{2}
@@ -25,9 +25,9 @@
 }
 \DeclareOption{isogold}{
 	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
-		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
+		\settrimmedsize{*}{\paperwidth}{1.41421356}
 	}{
-		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
+		\settrimmedsize{\paperheight}{*}{0.70710678}
 	}
 	\setulmarginsandblock{0.11111111\paperwidth}{*}{2}
 	\setlrmarginsandblock{0.11111111\paperwidth}{*}{2}
@@ -45,9 +45,9 @@
 }
 \DeclareOption{tufte}{
 	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
-		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
+		\settrimmedsize{*}{\paperwidth}{1.41421356}
 	}{
-		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
+		\settrimmedsize{\paperheight}{*}{0.70710678}
 	}
 	\setulmarginsandblock{0.092256\paperheight}{0.096296\paperheight}{*}
 	\setlrmarginsandblock{0.118095\paperwidth}{0.372381\paperwidth}{*}
@@ -55,9 +55,9 @@
 }
 \DeclareOption{tuftebl}{
 	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
-		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
+		\settrimmedsize{*}{\paperwidth}{1.41421356}
 	}{
-		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
+		\settrimmedsize{\paperheight}{*}{0.70710678}
 	}
 	\setulmarginsandblock{0.1\paperheight}{0.1\paperheight}{*}
 	\setlrmarginsandblock{0.125\paperwidth}{0.375\paperwidth}{*}
@@ -65,9 +65,9 @@
 }
 \DeclareOption{laurentian}{
 	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
-		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
+		\settrimmedsize{*}{\paperwidth}{1.41421356}
 	}{
-		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
+		\settrimmedsize{\paperheight}{*}{0.70710678}
 	}
 		\setulmarginsandblock{0.05555555\paperheight}{0.11111111\paperheight}{*}
 		\setlrmarginsandblock{0.08333333\paperwidth}{0.33333333\paperwidth}{*}
