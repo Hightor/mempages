@@ -1,4 +1,4 @@
-﻿\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mempages}[2011/09/12 v1.0]
 \usepackage{etoolbox}
 % \usepackage{microtype}
@@ -19,61 +19,69 @@
 	}{
 		\settrimmedsize{\paperheight}{0.66666667\paperheight}{*}
 	}
-	\setulmarginsandblock{0.11111111\paperheight}{0.22222222\paperheight}{*}
-	\setlrmarginsandblock{0.11111111\paperwidth}{0.222222222\paperwidth}{*}
+	\setulmarginsandblock{0.11111111\paperheight}{*}{2}
+	\setlrmarginsandblock{0.11111111\paperwidth}{*}{2}
 	\setmarginnotes{0.022222222\paperwidth}{0.155555556\paperwidth}{\marginparpush}
 }
 \DeclareOption{isogold}{
-	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
-		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
-		\setulmarginsandblock{0.11111111\stockwidth}{0.22222222\stockwidth}{*}
-		\setlrmarginsandblock{0.11111111\stockwidth}{0.22222222\stockwidth}{*}
-		\setmarginnotes{0.02222222\stockwidth}{0.15555556\stockwidth}{\marginparpush}
+	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
+		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
 	}{
-		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
-		\setulmarginsandblock{0.07856742\stockheight}{0.15713484\stockheight}{*}
-		\setlrmarginsandblock{0.07856742\stockheight}{0.15713484\stockheight}{*}
-		\setmarginnotes{0.015713484\stockheight}{0.10999439\stockheight}{\marginparpush}
+		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
 	}
+	\setulmarginsandblock{0.11111111\paperwidth}{*}{2}
+	\setlrmarginsandblock{0.11111111\paperwidth}{*}{2}
+	\setmarginnotes{0.02222222\paperwidth}{0.15555556\paperwidth}{\marginparpush}
+}
+\DeclareOption{vdqi}{
+	\ifdimcomp{\paperheight}{>}{1.24186\paperwidth}{%
+		\settrimmedsize{1.24186\paperwidth}{\paperwidth}{*}
+	}{
+		\settrimmedsize{\paperheight}{0.80524\paperheight}{*}
+	}
+	\setulmarginsandblock{0.11111111\paperheight}{*}{1}
+	\setlrmarginsandblock{0.0833333\paperwidth}{0.4\paperwidth}{*}
+	\setmarginnotes{0.0555556\paperwidth}{0.233333\paperwidth}{\marginparpush}
 }
 \DeclareOption{tufte}{
-	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
-		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
-		\setulmarginsandblock{0.130476\stockwidth}{0.135714\stockwidth}{*}
-		\setlrmarginsandblock{0.118095\stockwidth}{0.372381\stockwidth}{*}
-		\setmarginnotes{0.039048\stockwidth}{0.235238\stockwidth}{\marginparpush}
+	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
+		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
 	}{
-		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
-		\setulmarginsandblock{0.092256\stockheight}{0.095960\stockheight}{*}
-		\setlrmarginsandblock{0.083502\stockheight}{0.263300\stockheight}{*}
-		\setmarginnotes{0.027609\stockheight}{0.166330\stockheight}{\marginparpush}
+		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
 	}
+	\setulmarginsandblock{0.092256\paperheight}{0.096296\paperheight}{*}
+	\setlrmarginsandblock{0.118095\paperwidth}{0.372381\paperwidth}{*}
+	\setmarginnotes{0.034905\paperwidth}{0.235238\paperwidth}{\marginparpush}
 }
-\DeclareOption{bltufte}{
-	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
-		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
-		\setulmarginsandblock{0.14142136\stockwidth}{0.14142136\stockwidth}{*}
-		\setlrmarginsandblock{0.125\stockwidth}{0.375\stockwidth}{*}
-		\setmarginnotes{0.025\stockwidth}{0.25\stockwidth}{\marginparpush}
+\DeclareOption{tuftebl}{
+	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
+		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
 	}{
-		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
-		\setulmarginsandblock{0.1\stockheight}{0.1\stockheight}{*}
-		\setlrmarginsandblock{0.08838835\stockheight}{0.26516504\stockheight}{*}
-		\setmarginnotes{0.01767767\stockheight}{0.17677670\stockheight}{\marginparpush}
+		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
 	}
+	\setulmarginsandblock{0.1\paperheight}{0.1\paperheight}{*}
+	\setlrmarginsandblock{0.125\paperwidth}{0.375\paperwidth}{*}
+	\setmarginnotes{0.025\paperwidth}{0.25\paperwidth}{\marginparpush}
 }
 \DeclareOption{laurentian}{
-	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
-		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
-		\setulmarginsandblock{0.07856742\stockwidth}{0.15713484\stockwidth}{*}
-		\setlrmarginsandblock{0.08333333\stockwidth}{0.33333333\stockwidth}{*}
-		\setmarginnotes{0.04166667\stockwidth}{0.20833333\stockwidth}{\marginparpush}
+	\ifdimcomp{\paperheight}{>}{1.41421356\paperwidth}{%
+		\settrimmedsize{1.41421356\paperwidth}{\paperwidth}{*}
 	}{
-		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
-		\setulmarginsandblock{0.05555555\stockheight}{0.11111111\stockheight}{*}
-		\setlrmarginsandblock{0.058925565\stockheight}{0.23570226\stockheight}{*}
-		\setmarginnotes{0.02946278\stockheight}{0.14731391\stockheight}{\marginparpush}
+		\settrimmedsize{\paperheight}{0.70710678\paperheight}{*}
 	}
+		\setulmarginsandblock{0.05555555\paperheight}{0.11111111\paperheight}{*}
+		\setlrmarginsandblock{0.08333333\paperwidth}{0.33333333\paperwidth}{*}
+		\setmarginnotes{0.04166667\paperwidth}{0.20833333\paperwidth}{\marginparpush}
+}
+\DeclareOption{landsquare}{
+	\ifdimcomp{\paperwidth}{>}{1.41421356\paperheight}{%
+		\settrimmedsize{\paperheight}{*}{1.41421356}
+	}{
+		\settrimmedsize{*}{\paperwidth}{0.70710678}
+	}
+		\setulmarginsandblock{0.1125714\paperheight}{0.1874286\paperheight}{*}
+		\setlrmarginsandblock{0.0589226\paperwidth}{0.4461279\paperwidth}{*}
+		\setmarginnotes{0.03979798\paperwidth}{0.29292929\paperwidth}{\marginparpush}
 }
 \ProcessOptions
 \mp@caftl
@@ -87,5 +95,5 @@
 	\vspace{\mp@vskip}
 }{%
 	\vspace{\mp@vskip}
-	\end{adjustwidth}
+	\end{adjustwidth}%
 }
