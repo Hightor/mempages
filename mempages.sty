@@ -1,84 +1,101 @@
 ﻿\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{mempages}[2011/09/12 v1.0]
-\usepackage{fontspec}
-\usepackage{ifthen}
-\usepackage{mathpazo}
-\usepackage{tgpagella}
-\usepackage{tgadventor}
-\usepackage{microtype}
+\usepackage{etoolbox}
+% \usepackage{microtype}
+\newcommand{\genlength}[2]{%
+	\providelength{#1}
+	% \setlength{#1}{#2}
+	\let#1#2
+}
+\providecommand{\mp@txtalg}{lines}
+\newbool{mp@frame}
 % -------------------------------------------------
-\providecommand{\vstrut}[1]{\rule{0pt}{#1}}
-\providecommand{\hstrut}[1]{\rule{#1}{0pt}}
-\newcommand{\celia}{Celia~R.~Navarro\\}
-\newcommand{\brent}{Brent~Longborough\\}
-\newcommand{\neil}{Neil~Trueman\\}
-\newboolean{@envelope}
-\setboolean{@envelope}{false}
-\newboolean{@frame}
-\setboolean{@frame}{false}
-\newboolean{@portuguese}
-\setboolean{@portuguese}{false}
-\newlength{\blmpagewidth}
-\newlength{\blmbind}
-\setlength{\blmbind}{0pt}
-\newboolean{@stitch}
-\setboolean{@stitch}{false}
-% -------------------------------------------------
-\DeclareOption{portuguese}{\setboolean{@portuguese}{true}}
-\DeclareOption{showframe}{\setboolean{@frame}{true}}
-\DeclareOption{stitch}{
-	\setlength{\blmbind}{5mm}
-	\setboolean{@stitch}{true}
+\DeclareOption{frame}{\booltrue{mp@frame}}
+\DeclareOption{fixed}{\renewcommand{\mp@txtalg}{fixed}}
+\DeclareOption{lines}{\renewcommand{\mp@txtalg}{lines}}
+\DeclareOption{classic}{\renewcommand{\mp@txtalg}{classic}}
+\DeclareOption{nearest}{\renewcommand{\mp@txtalg}{nearest}}
+\DeclareOption{tschichold}{
+	\ifdimcomp{\stockheight}{>}{1.5\stockwidth}{%
+		\settrimmedsize{1.5\stockwidth}{\stockwidth}{*}
+		\setulmarginsandblock{0.16666667\stockwidth}{0.33333333\stockwidth}{*}
+		\setlrmarginsandblock{0.11111111\stockwidth}{0.22222222\stockwidth}{*}
+		\setmarginnotes{0.02222222\stockwidth}{0.15555556\stockwidth}{\marginparpush}
+	}{
+		\settrimmedsize{\stockheight}{0.66666667\stockheight}{*}
+		\setulmarginsandblock{0.11111111\stockheight}{0.22222222\stockheight}{*}
+		\setlrmarginsandblock{0.074074074\stockheight}{0.14814815\stockheight}{*}
+		\setmarginnotes{0.014814815\stockheight}{0.103703703\stockheight}{\marginparpush}
 	}
-\DeclareOption{widestitch}{
-	\setlength{\blmbind}{15mm}
-	\setboolean{@stitch}{true}
+}
+\DeclareOption{isogold}{
+	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
+		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
+		\setulmarginsandblock{0.11111111\stockwidth}{0.22222222\stockwidth}{*}
+		\setlrmarginsandblock{0.11111111\stockwidth}{0.22222222\stockwidth}{*}
+		\setmarginnotes{0.02222222\stockwidth}{0.15555556\stockwidth}{\marginparpush}
+	}{
+		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
+		\setulmarginsandblock{0.07856742\stockheight}{0.15713484\stockheight}{*}
+		\setlrmarginsandblock{0.07856742\stockheight}{0.15713484\stockheight}{*}
+		\setmarginnotes{0.015713484\stockheight}{0.10999439\stockheight}{\marginparpush}
 	}
+}
+\DeclareOption{tufte}{
+	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
+		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
+		\setulmarginsandblock{0.130476\stockwidth}{0.135714\stockwidth}{*}
+		\setlrmarginsandblock{0.118095\stockwidth}{0.372381\stockwidth}{*}
+		\setmarginnotes{0.039048\stockwidth}{0.235238\stockwidth}{\marginparpush}
+	}{
+		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
+		\setulmarginsandblock{0.092256\stockheight}{0.095960\stockheight}{*}
+		\setlrmarginsandblock{0.083502\stockheight}{0.263300\stockheight}{*}
+		\setmarginnotes{0.027609\stockheight}{0.166330\stockheight}{\marginparpush}
+	}
+}
+\DeclareOption{bltufte}{
+	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
+		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
+		\setulmarginsandblock{0.14142136\stockwidth}{0.14142136\stockwidth}{*}
+		\setlrmarginsandblock{0.125\stockwidth}{0.375\stockwidth}{*}
+		\setmarginnotes{0.025\stockwidth}{0.25\stockwidth}{\marginparpush}
+	}{
+		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
+		\setulmarginsandblock{0.1\stockheight}{0.1\stockheight}{*}
+		\setlrmarginsandblock{0.08838835\stockheight}{0.26516504\stockheight}{*}
+		\setmarginnotes{0.01767767\stockheight}{0.17677670\stockheight}{\marginparpush}
+	}
+}
+\DeclareOption{laurentian}{
+	\ifdimcomp{\stockheight}{>}{1.41421356\stockwidth}{%
+		\settrimmedsize{1.41421356\stockwidth}{\stockwidth}{*}
+		\setulmarginsandblock{0.07856742\stockwidth}{0.15713484\stockwidth}{*}
+		\setlrmarginsandblock{0.08333333\stockwidth}{0.33333333\stockwidth}{*}
+		\setmarginnotes{0.04166667\stockwidth}{0.20833333\stockwidth}{\marginparpush}
+	}{
+		\settrimmedsize{\stockheight}{0.70710678\stockheight}{*}
+		\setulmarginsandblock{0.05555555\stockheight}{0.11111111\stockheight}{*}
+		\setlrmarginsandblock{0.058925565\stockheight}{0.23570226\stockheight}{*}
+		\setmarginnotes{0.02946278\stockheight}{0.14731391\stockheight}{\marginparpush}
+	}
+}
 \ProcessOptions
-\defaultfontfeatures{Ligatures=TeX}
-\setmainfont[%
-	Numbers=OldStyle,
-	SizeFeatures={%
-		{Size={-8.4},Font=* Caption},
-		{Size={8.5-13.0},Font=*},
-		{Size={13.1-19.9},Font=* Subhead},
-		{Size={20.0-},Font=* Display}
-	}
-]{Minion Pro Medium}
-\setsansfont[%
-	Numbers=OldStyle
-]{Myriad Pro}
-\setmonofont[%
-	Numbers=Lining
-]{Consolas}
-\setulmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
-\setlrmarginsandblock{0.11111\paperwidth}{0.22222\paperwidth}{*}
-\setheadfoot{1.2\baselineskip}{0.0849\paperwidth}
-%\setheadfoot{1.2\baselineskip}{0.05\paperheight}
-% \setheaderspaces{*}{*}{0.618}
-\setmarginnotes{0.125\foremargin}{0.75\foremargin}{\onelineskip}
-\setcolsepandrule{10pt}{0.4pt}
-\setheaderspaces{*}{*}{0.618}
 \checkandfixthelayout[fixed]
-\ifthenelse{\boolean{@frame}}{\usepackage{showframe}}{}
-\makepagestyle{unruled}
-\makeevenfoot{unruled}{\thepage}{}{}
-\makeoddfoot{unruled}{}{}{\thepage}
-\makepsmarks{unruled}{\@ruledmarks}
-\makeevenhead{unruled}{\scshape\leftmark}{}{}
-\makeoddhead{unruled}{}{}{\rightmark}
-\makepagestyle{unRuled}
-\makerunningwidth{unRuled}{1.166667\textwidth}
-\makeheadposition{unRuled}{flushright}{flushleft}{flushright}{flushleft}
-\makeevenfoot{unRuled}{\thepage}{}{}
-\makeoddfoot{unRuled}{}{}{\thepage}
-\makepsmarks{unRuled}{\@ruledmarks}
-\makeevenhead{unRuled}{\scshape\leftmark}{}{}
-\makeoddhead{unRuled}{}{}{\rightmark}
-\setsecnumdepth{none}
-\renewcommand{\cftchapterleader}{}
-\renewcommand{\cftchapterafterpnum}{\hfill\space}
-\chapterstyle{bringhurst}
-\pagestyle{unruled}
-\frenchspacing
-\midsloppy
+\ifbool{mp@frame}{\usepackage{showframe}}{}
+\marginparmargin{outside}
+\sideparmargin{outside}
+\newenvironment{fullwidth}[1][0.5\onelineskip]{%
+	\providelength{\mp@vskip}\setlength{\mp@vskip}{#1}
+	\providelength{\mp@fullhang}\setlength{\mp@fullhang}{\marginparwidth}
+	\addtolength{\mp@fullhang}{\marginparsep}
+	\begin{adjustwidth}{0pt}{-\mp@fullhang}
+	\vspace{\mp@vskip}
+%	\begin{framed}
+%	\rule[-0.0\baselineskip]{\linewidth}{0.2pt}
+}{%
+%	\par\noindent\rule[0.6\baselineskip]{\linewidth}{0.2pt}
+%	\end{framed}
+	\vspace{\mp@vskip}
+	\end{adjustwidth}
+}
