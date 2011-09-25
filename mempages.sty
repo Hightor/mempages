@@ -7,12 +7,12 @@
 	% \setlength{#1}{#2}
 	\let#1#2
 }
-\providecommand{\mp@txtalg}{lines}
+\newcommand{\mp@caftl}{\checkandfixthelayout}
 % -------------------------------------------------
-\DeclareOption{fixed}{\renewcommand{\mp@txtalg}{fixed}}
-\DeclareOption{lines}{\renewcommand{\mp@txtalg}{lines}}
-\DeclareOption{classic}{\renewcommand{\mp@txtalg}{classic}}
-\DeclareOption{nearest}{\renewcommand{\mp@txtalg}{nearest}}
+\DeclareOption{fixed}{\renewcommand{\mp@caftl}{\checkandfixthelayout[fixed]}}
+\DeclareOption{lines}{\renewcommand{\mp@caftl}{\checkandfixthelayout[lines]}}
+\DeclareOption{classic}{\renewcommand{\mp@caftl}{\checkandfixthelayout[classic]}}
+\DeclareOption{nearest}{\renewcommand{\mp@caftl}{\checkandfixthelayout[nearest]}}
 \DeclareOption{tschichold}{
 	\ifdimcomp{\paperheight}{>}{1.5\paperwidth}{%
 		\settrimmedsize{1.5\paperwidth}{\paperwidth}{*}
@@ -76,7 +76,7 @@
 	}
 }
 \ProcessOptions
-\checkandfixthelayout[fixed]
+\mp@caftl
 \marginparmargin{outside}
 \sideparmargin{outside}
 \newenvironment{fullwidth}[1][0.5\onelineskip]{%
